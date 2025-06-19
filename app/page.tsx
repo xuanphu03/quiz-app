@@ -1,4 +1,4 @@
-import LayoutComponent from '@/components/layoutComponent';
+import LayoutComponent from '@/components/LayoutComponent';
 
 export default function QuizApp() {
   return <LayoutComponent />;

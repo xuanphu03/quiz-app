@@ -53,7 +53,7 @@ export function ResultsScreen({
           <CardDescription className="text-lg">
             {result.passed
               ? 'You passed the quiz with flying colors!'
-              : "You need 70% to pass. Don't give up!"}
+              : "You need 60% to pass. Don't give up!"}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
