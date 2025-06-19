@@ -91,7 +91,6 @@ export default function LayoutComponent() {
           selectedAnswer={selectedAnswer}
           showFeedback={showFeedback}
           userAnswers={userAnswers}
-          elapsedTime={elapsedTime}
           progress={progress}
           onAnswerSelect={selectAnswer}
           onSubmitAnswer={submitAnswer}

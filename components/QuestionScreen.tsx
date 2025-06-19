@@ -16,7 +16,6 @@ interface QuestionScreenProps {
   selectedAnswer: string;
   showFeedback: boolean;
   userAnswers: UserAnswer[];
-  elapsedTime: number;
   progress: number;
   onAnswerSelect: (answer: string) => void;
   onSubmitAnswer: () => void;
