@@ -1,5 +1,13 @@
 'use client';
 
+import type { QuizResult } from '@/types/quiz';
+import {
+  formatTime,
+  formatTimeDetailed,
+  formatScore,
+  getScoreColor,
+} from '@/utils/formatters';
+import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import {
   Card,
@@ -10,13 +18,6 @@ import {
 } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Trophy, XCircle, Target, RotateCcw, Eye } from 'lucide-react';
-import type { QuizResult } from '@/types/quiz';
-import {
-  formatTime,
-  formatTimeDetailed,
-  formatScore,
-  getScoreColor,
-} from '@/utils/formatters';
 
 interface ResultsScreenProps {
   result: QuizResult;
@@ -133,15 +134,12 @@ export function ResultsScreen({
           </div>
 
           <div
-            className={`p-4 rounded-lg ${
-              result.score >= 90
-                ? 'bg-green-50 border border-green-200'
-                : result.score >= 80
-                ? 'bg-blue-50 border border-blue-200'
-                : result.score >= 60
-                ? 'bg-yellow-50 border border-yellow-200'
-                : 'bg-red-50 border border-red-200'
-            }`}
+            className={cn('p-4 rounded-lg ', {
+              'bg-green-50 border border-green-200': result.score >= 90,
+              'bg-blue-50 border border-blue-200': result.score >= 80,
+              'bg-yellow-50 border border-yellow-200': result.score >= 60,
+              'bg-red-50 border border-red-200': result.score < 60,
+            })}
           >
             <p className="font-medium">
               {result.score >= 90 &&

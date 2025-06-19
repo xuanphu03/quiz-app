@@ -28,11 +28,10 @@ export default function LayoutComponent() {
     resetQuiz,
     startQuiz,
     selectAnswer,
-    submitAnswer,
+    onSubmitAnswer,
     getQuizResult,
     currentQuestion,
     progress,
-    elapsedTime,
   } = useQuiz(QUIZ_CONFIG);
 
   const handleStartQuiz = async () => {
@@ -93,7 +92,7 @@ export default function LayoutComponent() {
           userAnswers={userAnswers}
           progress={progress}
           onAnswerSelect={selectAnswer}
-          onSubmitAnswer={submitAnswer}
+          onSubmitAnswer={onSubmitAnswer}
         />
       );
 

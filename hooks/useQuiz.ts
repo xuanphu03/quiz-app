@@ -54,7 +54,7 @@ export const useQuiz = (config: QuizConfig) => {
     [showFeedback]
   );
 
-  const submitAnswer = useCallback(() => {
+  const onSubmitAnswer = useCallback(() => {
     if (!selectedAnswer || !questions[currentQuestionIndex]) return;
 
     const currentQuestion = questions[currentQuestionIndex];
@@ -129,7 +129,7 @@ export const useQuiz = (config: QuizConfig) => {
     resetQuiz,
     startQuiz,
     selectAnswer,
-    submitAnswer,
+    onSubmitAnswer,
     getQuizResult,
     currentQuestion: questions[currentQuestionIndex] || null,
     progress:
