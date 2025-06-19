@@ -23,7 +23,6 @@ export function ReviewScreen({
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-4xl mx-auto">
-        {/* Header */}
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold mb-2">Review Your Answers</h1>
           <p className="text-muted-foreground text-lg">
@@ -39,7 +38,6 @@ export function ReviewScreen({
           </div>
         </div>
 
-        {/* Questions Review */}
         <div className="space-y-6">
           {questions.map((question, index) => {
             const userAnswer = userAnswers[index];
@@ -100,7 +98,6 @@ export function ReviewScreen({
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {/* Answer Options */}
                     <div className="space-y-2">
                       {Object.entries(question.answers).map(([key, answer]) => {
                         if (!answer) return null;
@@ -154,7 +151,6 @@ export function ReviewScreen({
                       })}
                     </div>
 
-                    {/* Summary */}
                     <div
                       className={`p-3 rounded-lg border-l-4 ${
                         userAnswer.isCorrect
@@ -192,7 +188,6 @@ export function ReviewScreen({
           })}
         </div>
 
-        {/* Action Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Button
             onClick={onBackToResults}

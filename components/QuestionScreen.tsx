@@ -40,7 +40,6 @@ export function QuestionScreen({
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-3xl mx-auto">
-        {/* Header */}
         <div className="mb-6">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center gap-4">
@@ -75,7 +74,6 @@ export function QuestionScreen({
           <Progress value={progress} className="h-3 bg-gray-200" />
         </div>
 
-        {/* Question Card */}
         <Card className="shadow-lg">
           <CardHeader className="pb-4">
             <CardTitle className="text-xl leading-relaxed">
@@ -83,7 +81,6 @@ export function QuestionScreen({
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {/* Answer Options */}
             <div className="space-y-3">
               {question.answers.map((answer, index) => {
                 if (!answer) return null;
@@ -139,7 +136,6 @@ export function QuestionScreen({
               })}
             </div>
 
-            {/* Feedback */}
             {showFeedback && currentUserAnswer && (
               <div
                 className={`p-4 rounded-lg border-l-4 ${
@@ -167,7 +163,6 @@ export function QuestionScreen({
               </div>
             )}
 
-            {/* Submit Button */}
             {!showFeedback && (
               <Button
                 onClick={onSubmitAnswer}
@@ -179,7 +174,6 @@ export function QuestionScreen({
               </Button>
             )}
 
-            {/* Auto-advance indicator */}
             {showFeedback && (
               <div className="text-center text-sm text-gray-500 mt-4">
                 {currentIndex < totalQuestions - 1

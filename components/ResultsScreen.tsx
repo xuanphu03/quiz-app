@@ -56,7 +56,6 @@ export function ResultsScreen({
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          {/* Score Overview */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="p-4 bg-blue-50 rounded-lg">
               <div
@@ -86,7 +85,6 @@ export function ResultsScreen({
             </div>
           </div>
 
-          {/* Detailed Stats */}
           <div className="bg-gray-50 p-6 rounded-lg text-left space-y-3">
             <h3 className="font-semibold text-gray-800 flex items-center gap-2">
               <Target className="w-5 h-5" />
@@ -134,7 +132,6 @@ export function ResultsScreen({
             </div>
           </div>
 
-          {/* Performance Message */}
           <div
             className={`p-4 rounded-lg ${
               result.score >= 90
@@ -160,7 +157,6 @@ export function ResultsScreen({
             </p>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-3">
             <Button
               onClick={onReview}
