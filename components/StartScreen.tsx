@@ -34,7 +34,7 @@ export function StartScreen({ onStart, loading }: StartScreenProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
             <div className="flex flex-col items-center p-4 bg-blue-50 rounded-lg">
               <CheckCircle className="w-8 h-8 text-blue-500 mb-2" />
-              <div className="font-semibold">10 Questions</div>
+              <div className="font-semibold">5 Questions</div>
               <div className="text-muted-foreground">Multiple choice</div>
             </div>
             <div className="flex flex-col items-center p-4 bg-green-50 rounded-lg">
@@ -44,7 +44,7 @@ export function StartScreen({ onStart, loading }: StartScreenProps) {
             </div>
             <div className="flex flex-col items-center p-4 bg-purple-50 rounded-lg">
               <RotateCcw className="w-8 h-8 text-purple-500 mb-2" />
-              <div className="font-semibold">70% to Pass</div>
+              <div className="font-semibold">60% to Pass</div>
               <div className="text-muted-foreground">Passing score</div>
             </div>
           </div>

@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { CheckCircle, XCircle, Clock } from 'lucide-react';
 import type { Question, UserAnswer } from '@/types/quiz';
 import { formatTime } from '@/utils/formatters';
+import { useEffect, useState } from 'react';
 
 interface QuestionScreenProps {
   question: Question;
@@ -28,14 +29,22 @@ export function QuestionScreen({
   selectedAnswer,
   showFeedback,
   userAnswers,
-  elapsedTime,
   progress,
   onAnswerSelect,
   onSubmitAnswer,
 }: QuestionScreenProps) {
   const currentUserAnswer = userAnswers[userAnswers.length - 1];
 
-  console.log('question1: ', question);
+  const [elapsedTimeState, setElapsedTimeState] = useState(0);
+
+  useEffect(() => {
+    const start = Date.now();
+    const interval = setInterval(() => {
+      setElapsedTimeState(Date.now() - start);
+    }, 1000); 
+
+    return () => clearInterval(interval); 
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
@@ -68,7 +77,7 @@ export function QuestionScreen({
             </div>
             <Badge variant="outline" className="flex items-center gap-1">
               <Clock className="w-3 h-3" />
-              {formatTime(elapsedTime)}
+              {formatTime(elapsedTimeState)}
             </Badge>
           </div>
           <Progress value={progress} className="h-3 bg-gray-200" />

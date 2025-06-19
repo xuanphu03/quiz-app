@@ -10,7 +10,6 @@ export class QuizApiService {
       if (!response.data || !response.data.results) {
         throw new Error('Invalid response structure from API');
       }
-      console.log('Fetched questions from API:', response.data.results);
 
       const rawData = response.data.results;
 
@@ -30,7 +29,6 @@ export class QuizApiService {
       return updatedData;
     } catch (error) {
       console.error('Failed to fetch questions from API:', error);
-      // Return mock data as fallback
       return this.getMockQuestions();
     }
   }

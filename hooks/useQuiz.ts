@@ -60,7 +60,6 @@ export const useQuiz = (config: QuizConfig) => {
     const currentQuestion = questions[currentQuestionIndex];
     const timeSpent = Date.now() - questionStartTime;
 
-    // Find correct answer
     const correctAnswerKey = currentQuestion.correct_answer;
 
     const correctAnswerText = correctAnswerKey
@@ -71,9 +70,6 @@ export const useQuiz = (config: QuizConfig) => {
     currentQuestion.answers[Number.parseInt(selectedAnswer)] || '';
     
     const isCorrect = correctAnswerText === selectedAnswerText;
-
-    console.log('selectedAnswerText', selectedAnswerText);
-    console.log('correctAnswerText', correctAnswerText);
 
     const userAnswer: UserAnswer = {
       selectedAnswer,
@@ -86,7 +82,6 @@ export const useQuiz = (config: QuizConfig) => {
     setUserAnswers((prev) => [...prev, userAnswer]);
     setShowFeedback(true);
 
-    // Auto advance to next question or results
     setTimeout(() => {
       if (currentQuestionIndex < questions.length - 1) {
         setCurrentQuestionIndex((prev) => prev + 1);
