@@ -9,7 +9,6 @@ export interface Question {
 }
 
 export interface UserAnswer {
-  // questionId: number;
   selectedAnswer: string;
   selectedAnswerText: string;
   isCorrect: boolean;

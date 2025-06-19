@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { CheckCircle, XCircle, Clock } from 'lucide-react';
 import type { Question, UserAnswer } from '@/types/quiz';
 import { formatTime } from '@/utils/formatters';
+import { useEffect, useState } from 'react';
 
 interface QuestionScreenProps {
   question: Question;
@@ -15,7 +16,6 @@ interface QuestionScreenProps {
   selectedAnswer: string;
   showFeedback: boolean;
   userAnswers: UserAnswer[];
-  elapsedTime: number;
   progress: number;
   onAnswerSelect: (answer: string) => void;
   onSubmitAnswer: () => void;
@@ -28,19 +28,26 @@ export function QuestionScreen({
   selectedAnswer,
   showFeedback,
   userAnswers,
-  elapsedTime,
   progress,
   onAnswerSelect,
   onSubmitAnswer,
 }: QuestionScreenProps) {
   const currentUserAnswer = userAnswers[userAnswers.length - 1];
 
-  console.log('question1: ', question);
+  const [elapsedTimeState, setElapsedTimeState] = useState(0);
+
+  useEffect(() => {
+    const start = Date.now();
+    const interval = setInterval(() => {
+      setElapsedTimeState(Date.now() - start);
+    }, 1000); 
+
+    return () => clearInterval(interval); 
+  }, []);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
       <div className="max-w-3xl mx-auto">
-        {/* Header */}
         <div className="mb-6">
           <div className="flex justify-between items-center mb-4">
             <div className="flex items-center gap-4">
@@ -69,13 +76,12 @@ export function QuestionScreen({
             </div>
             <Badge variant="outline" className="flex items-center gap-1">
               <Clock className="w-3 h-3" />
-              {formatTime(elapsedTime)}
+              {formatTime(elapsedTimeState)}
             </Badge>
           </div>
           <Progress value={progress} className="h-3 bg-gray-200" />
         </div>
 
-        {/* Question Card */}
         <Card className="shadow-lg">
           <CardHeader className="pb-4">
             <CardTitle className="text-xl leading-relaxed">
@@ -83,7 +89,6 @@ export function QuestionScreen({
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {/* Answer Options */}
             <div className="space-y-3">
               {question.answers.map((answer, index) => {
                 if (!answer) return null;
@@ -139,7 +144,6 @@ export function QuestionScreen({
               })}
             </div>
 
-            {/* Feedback */}
             {showFeedback && currentUserAnswer && (
               <div
                 className={`p-4 rounded-lg border-l-4 ${
@@ -167,7 +171,6 @@ export function QuestionScreen({
               </div>
             )}
 
-            {/* Submit Button */}
             {!showFeedback && (
               <Button
                 onClick={onSubmitAnswer}
@@ -179,7 +182,6 @@ export function QuestionScreen({
               </Button>
             )}
 
-            {/* Auto-advance indicator */}
             {showFeedback && (
               <div className="text-center text-sm text-gray-500 mt-4">
                 {currentIndex < totalQuestions - 1
